@@ -4,7 +4,6 @@ import (
 	"net"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/Sirupsen/logrus/formatters/logstash"
 )
 
 // Hook represents a connection to a socket
@@ -29,7 +28,7 @@ func NewHook(protocol, address string) (*Hook, error) {
 
 // Fire send log to the defined socket
 func (h *Hook) Fire(entry *logrus.Entry) error {
-	formatter := logstash.LogstashFormatter{}
+	formatter := logrus.JSONFormatter{}
 	dataBytes, err := formatter.Format(entry)
 	if err != nil {
 		return err
