@@ -1,6 +1,6 @@
 # Socket hook for [logrus](https://github.com/sirupsen/logrus) <img src="http://i.imgur.com/hTeVwmJ.png" width="40" height="40" alt=":walrus:" class="emoji" title=":walrus:" />
 
-[![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/ShowMax/sockrus)
+[![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/Showmax/sockrus)
 
 Use this hook to send the logs over UDP, TCP or Unix socket.
 
@@ -13,7 +13,7 @@ package main
 
 import (
         "github.com/sirupsen/logrus"
-        "github.com/ShowMax/sockrus"
+        "github.com/Showmax/sockrus"
 )
 
 func main() {

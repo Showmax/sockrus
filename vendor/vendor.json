@@ -3,8 +3,8 @@
 	"ignore": "test",
 	"package": [
 		{
-			"checksumSHA1": "Cp8sJVMPvud4pUlxAZmnXQnnFTk=",
-			"path": "github.com/ShowMax/go-fqdn",
+			"checksumSHA1": "+glrnFVbBRn/PbNPAIgm451zrPs=",
+			"path": "github.com/Showmax/go-fqdn",
 			"revision": "2501cdd51ef4c60dd727c58b2199e1a09466b10f",
 			"revisionTime": "2016-09-09T08:34:04Z"
 		},
@@ -55,5 +55,5 @@
 			"revisionTime": "2017-06-01T21:22:28Z"
 		}
 	],
-	"rootPath": "github.com/ShowMax/sockrus"
+	"rootPath": "github.com/Showmax/sockrus"
 }

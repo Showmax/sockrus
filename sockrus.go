@@ -1,7 +1,7 @@
 package sockrus
 
 import (
-	fqdn "github.com/ShowMax/go-fqdn"
+	fqdn "github.com/Showmax/go-fqdn"
 	"github.com/sirupsen/logrus"
 )
 
