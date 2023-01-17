@@ -10,9 +10,10 @@ import (
 
 // Hook represents a connection to a socket
 type Hook struct {
-	formatter logrus_logstash.LogstashFormatter
-	protocol  string
-	address   string
+	formatter  logrus_logstash.LogstashFormatter
+	protocol   string
+	address    string
+	addNewline bool
 }
 
 // NewHook establish a socket connection.
@@ -22,14 +23,15 @@ type Hook struct {
 // For TCP and UDP, address must have the form `host:port`.
 //
 // For Unix networks, the address must be a file system path.
-func NewHook(protocol, address string) (*Hook, error) {
+func NewHook(protocol, address string, addNewline bool) (*Hook, error) {
 	logstashFormatter := logrus_logstash.LogstashFormatter{
 		TimestampFormat: time.RFC3339Nano,
 	}
 	return &Hook{
-		protocol:  protocol,
-		address:   address,
-		formatter: logstashFormatter,
+		protocol:   protocol,
+		address:    address,
+		formatter:  logstashFormatter,
+		addNewline: addNewline,
 	}, nil
 }
 
@@ -46,7 +48,10 @@ func (h *Hook) Fire(entry *logrus.Entry) error {
 		return nil
 	}
 	defer conn.Close()
-
+	// Add new line to every message if desired.
+	if h.addNewline {
+		dataBytes = append(dataBytes, "\n"...)
+	}
 	_, _ = conn.Write(dataBytes) // #nosec
 	return nil
 }

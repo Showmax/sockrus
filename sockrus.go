@@ -12,6 +12,7 @@ type Config struct {
 	Service        string
 	SocketAddr     string
 	SocketProtocol string
+	AddNewLine     bool
 }
 
 // NewSockrus is a wrapper for initialization of logrus with sockrus hook. It
@@ -36,7 +37,7 @@ func NewSockrus(config Config) (*logrus.Logger, *logrus.Entry) {
 		}
 	}
 
-	hook, err := NewHook(config.SocketProtocol, config.SocketAddr)
+	hook, err := NewHook(config.SocketProtocol, config.SocketAddr, config.AddNewLine)
 	if err != nil {
 		logInstance.WithFields(logrus.Fields{
 			"hostname": config.Hostname,
