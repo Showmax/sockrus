@@ -10,7 +10,7 @@ type Config struct {
 	Hostname       string       // Hostname of the machine we are logging from.
 	LogLevel       logrus.Level // Log level of messages we want to send to socket.
 	Service        string       // Service that is creating the logs.
-	SocketAddr     string       // Address to the socket.
+	SocketAddr     string       // Address of the socket.
 	SocketProtocol string       // Protocol of the socket.
 	AddNewLine     bool         // Toggle to send newline after every message to socket.
 }

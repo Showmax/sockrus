@@ -11,9 +11,9 @@ import (
 // Hook represents a connection to a socket
 type Hook struct {
 	formatter  logrus_logstash.LogstashFormatter
-	protocol   string
-	address    string
-	addNewline bool
+	protocol   string // Protocol to the socket.
+	address    string // Address to the socket.
+	addNewline bool   // Toggle to send newline after every message to socket.
 }
 
 // NewHook establish a socket connection.
