@@ -7,12 +7,12 @@ import (
 
 // Config serves as means to configure logger and hook.
 type Config struct {
-	Hostname       string
-	LogLevel       logrus.Level
-	Service        string
-	SocketAddr     string
-	SocketProtocol string
-	AddNewLine     bool
+	Hostname       string       // Hostname of the machine we are logging from.
+	LogLevel       logrus.Level // Log level of messages we want to send to socket.
+	Service        string       // Service that is creating the logs.
+	SocketAddr     string       // Address to the socket.
+	SocketProtocol string       // Protocol of the socket.
+	AddNewLine     bool         // Toggle to send newline after every message to socket.
 }
 
 // NewSockrus is a wrapper for initialization of logrus with sockrus hook. It
