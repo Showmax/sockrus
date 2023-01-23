@@ -27,7 +27,7 @@ func NewSockrus(config Config) (*logrus.Logger, *logrus.Entry) {
 
 	// Get hostname.
 	if config.Hostname == "" {
-		config.Hostname = fqdn.Get()
+		config.Hostname, _ = fqdn.FqdnHostname()
 		if config.Hostname == "unknown" {
 			logInstance.WithFields(logrus.Fields{
 				"hostname": config.Hostname,
