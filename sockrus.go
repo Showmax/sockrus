@@ -7,11 +7,12 @@ import (
 
 // Config serves as means to configure logger and hook.
 type Config struct {
-	Hostname       string
-	LogLevel       logrus.Level
-	Service        string
-	SocketAddr     string
-	SocketProtocol string
+	Hostname       string       // Hostname of the machine we are logging from.
+	LogLevel       logrus.Level // Log level of messages we want to send to socket.
+	Service        string       // Service that is creating the logs.
+	SocketAddr     string       // Address of the socket.
+	SocketProtocol string       // Protocol of the socket.
+	AddNewLine     bool         // Toggle to send newline after every message to socket.
 }
 
 // NewSockrus is a wrapper for initialization of logrus with sockrus hook. It
@@ -36,7 +37,7 @@ func NewSockrus(config Config) (*logrus.Logger, *logrus.Entry) {
 		}
 	}
 
-	hook, err := NewHook(config.SocketProtocol, config.SocketAddr)
+	hook, err := NewHook(config.SocketProtocol, config.SocketAddr, config.AddNewLine)
 	if err != nil {
 		logInstance.WithFields(logrus.Fields{
 			"hostname": config.Hostname,
