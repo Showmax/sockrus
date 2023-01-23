@@ -1,16 +1,14 @@
 package sockrus
 
 import (
-	"net"
-	"time"
-
 	logrus_logstash "github.com/bshuster-repo/logrus-logstash-hook"
 	"github.com/sirupsen/logrus"
+	"net"
 )
 
 // Hook represents a connection to a socket
 type Hook struct {
-	formatter  logrus_logstash.LogstashFormatter
+	formatter  logrus.Formatter
 	protocol   string // Protocol to the socket.
 	address    string // Address to the socket.
 	addNewline bool   // Toggle to send newline after every message to socket.
@@ -24,9 +22,7 @@ type Hook struct {
 //
 // For Unix networks, the address must be a file system path.
 func NewHook(protocol, address string, addNewline bool) (*Hook, error) {
-	logstashFormatter := logrus_logstash.LogstashFormatter{
-		TimestampFormat: time.RFC3339Nano,
-	}
+	logstashFormatter := logrus_logstash.DefaultFormatter(logrus.Fields{})
 	return &Hook{
 		protocol:   protocol,
 		address:    address,
